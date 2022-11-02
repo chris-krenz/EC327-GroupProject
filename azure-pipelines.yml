@@ -32,9 +32,9 @@ steps:
 - task: shellexec@0
   inputs:
     code: |
-      git config --global user.email "xx@xx.com"
-      git config --global user.name "xxx"
+      git config --global user.email "chris.dean.krenz@gmail.com"
+      git config --global user.name "chris-krenz"
       git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
-      git remote add vsts https://xxx.visualstudio.com/GithubSync/_git/GithubSync
+      git remote add vsts https://ec327-groupproject.visualstudio.com/Main/_git/Main
       git branch -r | grep -v '\->' | while read remote; do git -c http.extraheader="AUTHORIZATION: bearer $(system_accesstoken)" push -u vsts "${remote#origin/}"; done
       
