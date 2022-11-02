@@ -3,13 +3,38 @@
 # Add steps that publish test results, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/c-cpp/gcc
 
+#trigger:
+#- main
+#
+#pool:
+#  vmImage: ubuntu-latest
+#
+#steps:
+#- script: |
+#    make
+#  displayName: 'make'
+
 trigger:
-- main
+  branches:
+    include:
+    - '*'
+variables:
+  system_accesstoken: $(System.AccessToken)
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: |
-    make
-  displayName: 'make'
+- checkout: self
+  persistCredentials: true    #Allow scripts to access the system token
+  clean: true 
+
+- task: shellexec@0
+  inputs:
+    code: |
+      git config --global user.email "xx@xx.com"
+      git config --global user.name "xxx"
+      git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+      git remote add vsts https://xxx.visualstudio.com/GithubSync/_git/GithubSync
+      git branch -r | grep -v '\->' | while read remote; do git -c http.extraheader="AUTHORIZATION: bearer $(system_accesstoken)" push -u vsts "${remote#origin/}"; done
+      
