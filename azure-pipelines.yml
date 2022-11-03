@@ -21,8 +21,7 @@ trigger:
 variables:
   system_accesstoken: $(System.AccessToken)
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: Default
 
 steps:
 - checkout: self
