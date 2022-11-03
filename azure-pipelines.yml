@@ -28,7 +28,7 @@ steps:
   persistCredentials: true    #Allow scripts to access the system token
   clean: true 
 
-- task: PowerShell@2
+- task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
