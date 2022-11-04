@@ -19,13 +19,13 @@ stages:
           persistCredentials: true
           displayName: run_commands
         - bash: | 
-            git config --global user.email "chris.dean.krenz@gmail.com"
-            git config --global user.name "chris-krenz"
+            git config --global user.email 'chris.dean.krenz@gmail.com'
+            git config --global user.name 'chris-krenz'
             git checkout main
-            git remote add repoGithub $(REMOTE_ADDR)
-            git fetch repoGithub main
-            git reset --hard repoGithub/main
-            git pull --rebase repoGithub main
+            git remote add EC327-GroupProject $(REMOTE_ADDR)
+            git fetch EC327-GroupProject main
+            git reset --hard EC327-GroupProject/main
+            git pull --rebase EC327-GroupProject main
             git push --force origin
 
 #trigger:
