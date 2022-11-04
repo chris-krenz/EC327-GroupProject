@@ -5,8 +5,8 @@
 
 name: Keep clone up to date
 variables:
-  REMOTE_ADDR: 'https://github.com/chris-krenz/EC327-GroupProject.git'
-  # system_accesstoken: $(System.AccessToken)
+  REMOTE_ADDR: 'https://EC327-GroupProject@dev.azure.com/EC327-GroupProject/Main/_git/Main'
+  SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
 pool: Default
 
@@ -30,12 +30,12 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      git config --global user.email 'chris.dean.krenz@gmail.com'
+      git config --global user.email 'ckrenz@bu.edu'
       git config --global user.name 'chris-krenz'
       git remote add github_project $(REMOTE_ADDR)
       git reset --hard github_project/main
       git pull --rebase github_project main
-      git -c http.extraheader='AUTHORIZATION: bearer $(SYSTEM_ACCESSTOKEN)' push --force origin
+      git -c http.extraheader='AUTHORIZATION: bearer $(SYSTEM_ACCESSTOKEN)' push --force $(REMOTE_ADDR)
 
 #trigger:
 #- main
