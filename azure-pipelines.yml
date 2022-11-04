@@ -17,6 +17,7 @@ pool: Default
 #       - job: initiate
 #         displayName: initiate
 #         continueOnError: false
+# git checkout main   # place below username below
 
 steps:
 - checkout: self
@@ -30,12 +31,11 @@ steps:
     script: |
       git config --global user.email 'chris.dean.krenz@gmail.com'
       git config --global user.name 'chris-krenz'
-      git checkout Main
       git remote add github_project $(REMOTE_ADDR)
       git fetch github_project main
       git reset --hard github_project/main
       git pull --rebase github_project main
-      git -c http.extraheader='AUTHORIZATION: bearer $(system_accesstoken)' push --force github_project
+      git -c http.extraheader='AUTHORIZATION: bearer $(system_accesstoken)' push --force origin
 
 #trigger:
 #- main
