@@ -22,11 +22,11 @@ stages:
             git config --global user.email 'chris.dean.krenz@gmail.com'
             git config --global user.name 'chris-krenz'
             git checkout main
-            git remote add EC327-GroupProject $(REMOTE_ADDR)
-            git fetch EC327-GroupProject main
-            git reset --hard EC327-GroupProject/main
-            git pull --rebase EC327-GroupProject main
-            git push --force origin
+            git remote add github_project $(REMOTE_ADDR)
+            git fetch github_project main
+            git reset --hard github_project/main
+            git pull --rebase github_project main
+            git push --force github_project
 
 #trigger:
 #- main
