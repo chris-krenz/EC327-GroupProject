@@ -1,0 +1,15 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+- task: mirror-git-repository-vsts-task@1
+  inputs:
+    sourceGitRepositoryUri: '$(Build.Repository.Uri)'
+    sourceGitRepositoryPersonalAccessToken: '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'
+    destinationGitRepositoryUri: 'https://ec327-groupproject.visualstudio.com/Main/_git/Main'
+    destinationGitRepositoryPersonalAccessToken: 'ufq7mlwztcbfhjfp2cle5qlyx2qi3dyfhhgcjkhwfqjkgz57tvnq'
+  displayName: 'Run a multi-line script'
