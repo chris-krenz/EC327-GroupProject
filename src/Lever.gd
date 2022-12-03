@@ -1,9 +1,10 @@
 extends AnimatedSprite
 
 onready var slider : VSlider = get_node("slider")	#'onready' same as func _ready()
-onready var wheel1 : AnimatedSprite = get_node("Wheel1")
 
 var dragging : bool = false
+
+signal pulled
 
 
 func _on_slider_drag_started():
@@ -14,25 +15,19 @@ func _on_slider_drag_ended(_value_changed):	# triggered when mouse button releas
 	if dragging == true:
 		dragging = false
 		if slider.value > 10:
-			frame = 25 + (slider.value/5)
-			playing = true
-			slider.value = 30
-	else:
-		slider.value = 30
+			frame = (slider.value/5) as int + 25
+			self.playing = true
+	slider.value = 30
 
 
 func _on_Lever_animation_finished():
-	playing = false
-
-
-func _process(_delta):
-	pass
+	self.playing = false
 
 
 func _on_VSlider_value_changed(value):
 	if (dragging == true) and (value > 10):
 		frame = 30 - value
 	elif (dragging == true) and (value <= 10):
-		playing = true
+		self.playing = true
 		dragging = false
-		wheel1.playing = true
+		emit_signal("pulled")	# Picked up by Wheel(s)
