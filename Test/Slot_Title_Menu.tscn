@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fonts/fp9b8a.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Credits_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Play_Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Options_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FadeTest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Slot_Title_Menu.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_color = Color( 0.0980392, 0.0901961, 0.0901961, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="Slot_Title_Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 80.0
+margin_top = 60.0
+margin_right = 944.0
+margin_bottom = 540.0
+
+[node name="Logo" type="Label" parent="Menu"]
+margin_right = 864.0
+margin_bottom = 105.0
+custom_colors/font_color = Color( 0.956863, 0.945098, 0.945098, 1 )
+custom_colors/font_outline_modulate = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+custom_constants/shadow_offset_x = 15
+custom_fonts/font = SubResource( 1 )
+text = "EncoreLite: An EC327 Project
+Fall 2022"
+align = 1
+valign = 1
+
+[node name="All_Buttons" type="HBoxContainer" parent="Menu"]
+margin_top = 109.0
+margin_right = 864.0
+margin_bottom = 480.0
+size_flags_vertical = 3
+
+[node name="Button_options" type="VBoxContainer" parent="Menu/All_Buttons"]
+margin_right = 430.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Play_Button" parent="Menu/All_Buttons/Button_options" instance=ExtResource( 3 )]
+margin_top = 91.0
+margin_right = 430.0
+margin_bottom = 151.0
+
+[node name="Options_button" parent="Menu/All_Buttons/Button_options" instance=ExtResource( 4 )]
+margin_top = 155.0
+margin_right = 430.0
+margin_bottom = 215.0
+
+[node name="Credits_button" parent="Menu/All_Buttons/Button_options" instance=ExtResource( 2 )]
+margin_top = 219.0
+margin_right = 430.0
+margin_bottom = 279.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/All_Buttons"]
+margin_left = 434.0
+margin_right = 864.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Team_Info" type="Label" parent="Menu/All_Buttons/CenterContainer"]
+margin_left = 87.0
+margin_top = 40.0
+margin_right = 342.0
+margin_bottom = 331.0
+custom_colors/font_color = Color( 0.372549, 0.866667, 0.890196, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 2 )
+text = "Team Member:
+
+Ryan Darrow
+Chris Krenz
+Jayden Raphino
+Matthew Rhee
+Yanbo (Mark) Zhu"
+align = 1
+
+[node name="FadeTest" parent="." instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+
+[connection signal="fade_done" from="FadeTest" to="." method="_on_FadeTest_fade_done"]
