@@ -56,6 +56,7 @@ alignment = 1
 margin_top = 91.0
 margin_right = 430.0
 margin_bottom = 151.0
+scene_to_load = "res://SlotMachine.tscn"
 
 [node name="Options_button" parent="Menu/All_Buttons/Button_options" instance=ExtResource( 4 )]
 margin_top = 155.0
