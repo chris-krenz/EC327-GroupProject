@@ -44,7 +44,7 @@ animations = [ {
 [node name="Node2D" type="Node2D"]
 
 [node name="Wheel1" type="AnimatedSprite" parent="."]
-position = Vector2( 162, 298 )
+position = Vector2( 198, 195 )
 frames = SubResource( 1 )
 animation = "wheel1"
 script = ExtResource( 1 )
