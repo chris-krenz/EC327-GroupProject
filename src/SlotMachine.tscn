@@ -535,57 +535,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 36 )
-
-[sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 36 )
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[node name="Machine" type="Node2D"]
-
-[node name="Machine" type="AnimatedSprite" parent="."]
-position = Vector2( 475, 289 )
-scale = Vector2( 0.597222, 0.597222 )
-frames = SubResource( 6 )
-animation = "machine"
-script = ExtResource( 490 )
-
-[node name="Lever" type="AnimatedSprite" parent="Machine"]
-show_behind_parent = true
-position = Vector2( -191, -360 )
-frames = SubResource( 4 )
-animation = "lever"
-centered = false
-script = ExtResource( 68 )
-
-[node name="slider" type="VSlider" parent="Machine/Lever"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 481.0
-margin_top = 342.0
-margin_right = 505.0
-margin_bottom = 447.0
-max_value = 60.0
-value = 60.0
-rounded = true
-scrollable = false
-
-[node name="Panel" type="Panel" parent="Machine/Lever"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 474.0
-margin_top = 372.0
-margin_right = 512.0
-margin_bottom = 471.0
-
-[node name="Wheel1" type="AnimatedSprite" parent="Machine"]
-position = Vector2( -147.292, -60.2447 )
 frames = SubResource( 1 )
 animation = "wheel1"
 speed_scale = 3.0
