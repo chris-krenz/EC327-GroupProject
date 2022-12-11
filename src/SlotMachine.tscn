@@ -768,7 +768,7 @@ flat = true
 script = ExtResource( 34 )
 
 [node name="Wallet" type="AnimatedSprite" parent="."]
-position = Vector2( 459, 432.358 )
+position = Vector2( 459, 437.783 )
 scale = Vector2( 0.256836, 0.256836 )
 frames = SubResource( 7 )
 animation = "wallet"
@@ -861,6 +861,7 @@ texture = ExtResource( 522 )
 [connection signal="animation_finished" from="Machine/CoinReturn" to="Machine/CoinReturn" method="_on_CoinReturn_animation_finished"]
 [connection signal="animation_finished" from="Machine/CoinReturn" to="Spins" method="_on_CoinReturn_animation_finished"]
 [connection signal="pressed" from="Machine/CoinReturn/Button" to="Machine/CoinReturn" method="_on_Button_pressed"]
+[connection signal="pressed" from="Machine/CoinReturn/Button" to="Spins" method="_on_Button_pressed"]
 [connection signal="pressed" from="slot-mainmenu" to="slot-mainmenu" method="_on_slotmainmenu_pressed"]
 [connection signal="pressed" from="slot-button-credits" to="slot-button-credits" method="_on_slotbuttoncredits_pressed"]
 [connection signal="freespins" from="Wallet" to="Spins" method="_on_Wallet_freespins"]

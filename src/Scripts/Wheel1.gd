@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-var difficulty : String = "Lucky"
+var difficulty : String = "GuaranteeWin"
 var rng        : RandomNumberGenerator = RandomNumberGenerator.new()
 var rotations  : int = 0
 var timer      : int = 0
