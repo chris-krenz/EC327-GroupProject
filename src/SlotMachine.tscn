@@ -1,4 +1,4 @@
-[gd_scene load_steps=582 format=2]
+[gd_scene load_steps=583 format=2]
 
 [ext_resource path="res://Scripts/Wheel3.gd" type="Script" id=1]
 [ext_resource path="res://wheel1/left0030.png" type="Texture" id=2]
@@ -572,6 +572,7 @@
 [ext_resource path="res://wallet/coinstack0033.png" type="Texture" id=570]
 [ext_resource path="res://wallet/coinstack0004.png" type="Texture" id=571]
 [ext_resource path="res://wallet/coinstack0022.png" type="Texture" id=572]
+[ext_resource path="res://drop_zone_2.gd" type="Script" id=573]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -620,7 +621,7 @@ animations = [ {
 "frames": [ ExtResource( 508 ), ExtResource( 512 ), ExtResource( 504 ), ExtResource( 511 ), ExtResource( 501 ), ExtResource( 505 ), ExtResource( 513 ), ExtResource( 506 ), ExtResource( 503 ), ExtResource( 502 ), ExtResource( 514 ), ExtResource( 497 ), ExtResource( 510 ), ExtResource( 515 ), ExtResource( 500 ), ExtResource( 516 ), ExtResource( 509 ), ExtResource( 507 ), ExtResource( 499 ), ExtResource( 498 ) ],
 "loop": true,
 "name": "coinreturn",
-"speed": 10.0
+"speed": 60.0
 } ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -637,8 +638,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 250.0
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 1060, 205 )
 
 [node name="Machine" type="Node2D"]
 script = ExtResource( 494 )
@@ -809,24 +810,31 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="drop_coin_insert" type="Position2D" parent="." groups=["zone"]]
+visible = false
+position = Vector2( 599, 410 )
+script = ExtResource( 520 )
+
+[node name="drop_wallet_tray" type="Position2D" parent="." groups=["zone"]]
+visible = false
+position = Vector2( 445.564, 429 )
+script = ExtResource( 573 )
+
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 669, 421 )
+position = Vector2( 444.615, 428 )
 script = ExtResource( 519 )
 
 [node name="Coin" type="Sprite" parent="Node2D"]
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 518 )
 
-[node name="Area2D" type="Area2D" parent="Node2D/Coin"]
+[node name="Area2D" type="Area2D" parent="Node2D"]
+scale = Vector2( 0.1, 0.1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Coin/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2( 3.85059, 5 )
+scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 9 )
-
-[node name="drop_zone" type="Position2D" parent="." groups=["zone"]]
-visible = false
-position = Vector2( 599, 410 )
-scale = Vector2( 0.7, 1.1 )
-script = ExtResource( 520 )
 
 [node name="Cover" type="Sprite" parent="."]
 position = Vector2( 458, 441 )
@@ -857,4 +865,8 @@ texture = ExtResource( 522 )
 [connection signal="pressed" from="slot-button-credits" to="slot-button-credits" method="_on_slotbuttoncredits_pressed"]
 [connection signal="freespins" from="Wallet" to="Spins" method="_on_Wallet_freespins"]
 [connection signal="winnings" from="Wallet" to="WalletAmount" method="_on_Wallet_winnings"]
-[connection signal="input_event" from="Node2D/Coin/Area2D" to="Node2D" method="_on_Area2D_input_event"]
+[connection signal="returned" from="Spins" to="Wallet" method="_on_Spins_returned"]
+[connection signal="coin_inserted" from="drop_coin_insert" to="Spins" method="_on_drop_coin_insert_coin_inserted"]
+[connection signal="grabbed" from="Node2D" to="Wallet" method="_on_Node2D_grabbed"]
+[connection signal="released" from="Node2D" to="Wallet" method="_on_Node2D_released"]
+[connection signal="input_event" from="Node2D/Area2D" to="Node2D" method="_on_Area2D_input_event"]
