@@ -129,7 +129,7 @@
 [ext_resource path="res://window/0016.png" type="Texture" id=127]
 [ext_resource path="res://window/0024.png" type="Texture" id=128]
 [ext_resource path="res://window/0011.png" type="Texture" id=129]
-[ext_resource path="res://Window.gd" type="Script" id=130]
+[ext_resource path="res://Scripts/Window.gd" type="Script" id=130]
 [ext_resource path="res://wheel1/0052.png" type="Texture" id=131]
 [ext_resource path="res://wheel1/0058.png" type="Texture" id=132]
 [ext_resource path="res://wheel1/0048.png" type="Texture" id=133]
@@ -489,9 +489,10 @@
 [ext_resource path="res://wheel3/0080.png" type="Texture" id=487]
 [ext_resource path="res://wheel3/0079.png" type="Texture" id=488]
 [ext_resource path="res://wheel3/0082.png" type="Texture" id=489]
-[ext_resource path="res://Machine.gd" type="Script" id=490]
-[ext_resource path="res://WalletAmount.gd" type="Script" id=491]
-[ext_resource path="res://Wallet.gd" type="Script" id=492]
+[ext_resource path="res://Scripts/Machine.gd" type="Script" id=490]
+[ext_resource path="res://Scripts/WalletAmount.gd" type="Script" id=491]
+[ext_resource path="res://Scripts/Wallet.gd" type="Script" id=492]
+
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -535,6 +536,57 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 36 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 36 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Machine" type="Node2D"]
+
+[node name="Machine" type="AnimatedSprite" parent="."]
+position = Vector2( 475, 289 )
+scale = Vector2( 0.597222, 0.597222 )
+frames = SubResource( 6 )
+animation = "machine"
+script = ExtResource( 490 )
+
+[node name="Lever" type="AnimatedSprite" parent="Machine"]
+show_behind_parent = true
+position = Vector2( -191, -360 )
+frames = SubResource( 4 )
+animation = "lever"
+centered = false
+script = ExtResource( 68 )
+
+[node name="slider" type="VSlider" parent="Machine/Lever"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 481.0
+margin_top = 342.0
+margin_right = 505.0
+margin_bottom = 447.0
+max_value = 60.0
+value = 60.0
+rounded = true
+scrollable = false
+
+[node name="Panel" type="Panel" parent="Machine/Lever"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 474.0
+margin_top = 372.0
+margin_right = 512.0
+margin_bottom = 471.0
+
+[node name="Wheel1" type="AnimatedSprite" parent="Machine"]
+position = Vector2( -147.292, -60.2447 )
 frames = SubResource( 1 )
 animation = "wheel1"
 speed_scale = 3.0
@@ -615,6 +667,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[connection signal="ready" from="." to="Machine" method="_on_Machine_ready"]
 [connection signal="animation_finished" from="Machine/Lever" to="Machine/Lever" method="_on_Lever_animation_finished"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel1" method="_on_Lever_pulled"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel2" method="_on_Lever_pulled"]

@@ -6,4 +6,4 @@ func _ready():
 
 
 func _on_slotbuttoncredits_pressed():
-	get_tree().change_scene("res://SlotCredits.tscn")
+	get_tree().change_scene("res://CreditsScene.tscn")
