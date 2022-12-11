@@ -1,6 +1,5 @@
 extends RichTextLabel
 
-var total : int
 var string = "[b][right]%s[/right][/b]"
 var actual = ""
 
@@ -9,11 +8,9 @@ func _ready():
 	bbcode_text = actual
 
 
-# https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_format_string.html
 func _on_Wallet_winnings(winnings):
-	total += winnings
-	if total > 9999999:
+	if winnings > 9999999:
 		actual = "Overflow"
 	else:
-		actual = string % total
+		actual = string % winnings
 	bbcode_text = actual
