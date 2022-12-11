@@ -1,10 +1,16 @@
 extends AnimatedSprite
 
-onready var slider : VSlider = get_node("slider")	#'onready' same as func _ready()
+# CONTROL FLOW: Wheels ready -> Lever/slider active -> Lever_pulled -> Wheels spin...
+# 			 ...stop after rand duration -> emit signals to Wallet -> Calcs result
+
+onready var slider : VSlider = get_node("slider")
+
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 var dragging : bool = false
 
-signal pulled
+signal pulled(rand_base)
+var rand_base : int = 0
 
 
 func _on_slider_drag_started():
@@ -29,4 +35,8 @@ func _on_slider_value_changed(value):
 	elif (dragging == true) and (value <= 20):
 		self.playing = true
 		dragging = false
-		emit_signal("pulled")	# Picked up by Wheel(s)
+		
+		rng.seed  = hash("FooBar")
+		rng.randomize()
+		rand_base = rng.randi_range(0, 120)
+		emit_signal("pulled", rand_base)	# Picked up by Wheel(s)
