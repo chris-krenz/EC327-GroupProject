@@ -1,16 +1,31 @@
 extends Node2D
 
+export (NodePath) var dropdown_path
+onready var dropdown = get_node(dropdown_path)
+var diff_test
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	dropdown.connect("item_selected", self, "_on_OptionButton_item_selected")
+	
+	add_options()
+	
+	
+func add_options():
+	dropdown.add_item("GuaranteeWin")
+	dropdown.add_item("Hacker")
+	dropdown.add_item("Lucky")
+	dropdown.add_item("Normal")
+	dropdown.add_item("GuaranteeLoss")
+
+
+func _on_OptionButton_item_selected(index):
+	diff_test = dropdown.get_item_text(index)
+
+
+func _on_CheckButton_button_down():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_CheckButton_button_up():
+	pass # Replace with function body.

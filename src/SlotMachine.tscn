@@ -1,4 +1,4 @@
-[gd_scene load_steps=582 format=2]
+[gd_scene load_steps=584 format=2]
 
 [ext_resource path="res://Scripts/Wheel3.gd" type="Script" id=1]
 [ext_resource path="res://wheel1/left0030.png" type="Texture" id=2]
@@ -640,8 +640,17 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=9]
 radius = 250.0
 
+[sub_resource type="DynamicFont" id=10]
+size = 20
+font_data = ExtResource( 36 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 20
+font_data = ExtResource( 36 )
+
 [node name="Machine" type="Node2D"]
 script = ExtResource( 494 )
+dropdown_path = NodePath("OptionButton")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -744,8 +753,10 @@ mouse_default_cursor_shape = 2
 script = ExtResource( 517 )
 
 [node name="slot-mainmenu" type="Button" parent="."]
-margin_right = 170.0
-margin_bottom = 54.0
+margin_left = 31.0
+margin_top = 41.0
+margin_right = 201.0
+margin_bottom = 95.0
 custom_colors/font_color = Color( 0.976471, 0.972549, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 0.870588, 0.882353, 0.0666667, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -833,6 +844,34 @@ position = Vector2( 458, 441 )
 scale = Vector2( 0.256226, 0.256226 )
 texture = ExtResource( 522 )
 
+[node name="SoundOpt" type="Label" parent="."]
+margin_left = 827.0
+margin_top = 49.0
+margin_right = 913.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 10 )
+text = "Sound: "
+
+[node name="CheckButton" type="CheckButton" parent="."]
+margin_left = 893.0
+margin_top = 42.0
+margin_right = 969.0
+margin_bottom = 82.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 762.0
+margin_top = 91.0
+margin_right = 865.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 11 )
+text = "Difficulty: "
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 869.0
+margin_top = 95.0
+margin_right = 991.0
+margin_bottom = 115.0
+
 [connection signal="animation_finished" from="Machine/Lever" to="Machine/Lever" method="_on_Lever_animation_finished"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel1" method="_on_Lever_pulled"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel2" method="_on_Lever_pulled"]
@@ -858,3 +897,5 @@ texture = ExtResource( 522 )
 [connection signal="freespins" from="Wallet" to="Spins" method="_on_Wallet_freespins"]
 [connection signal="winnings" from="Wallet" to="WalletAmount" method="_on_Wallet_winnings"]
 [connection signal="input_event" from="Node2D/Coin/Area2D" to="Node2D" method="_on_Area2D_input_event"]
+[connection signal="button_down" from="CheckButton" to="." method="_on_CheckButton_button_down"]
+[connection signal="button_up" from="CheckButton" to="." method="_on_CheckButton_button_up"]
