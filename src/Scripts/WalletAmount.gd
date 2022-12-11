@@ -12,5 +12,8 @@ func _ready():
 # https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_format_string.html
 func _on_Wallet_winnings(winnings):
 	total += winnings
-	actual = string % total
+	if total > 9999999:
+		actual = "Overflow"
+	else:
+		actual = string % total
 	bbcode_text = actual

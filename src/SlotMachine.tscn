@@ -1,4 +1,4 @@
-[gd_scene load_steps=500 format=2]
+[gd_scene load_steps=502 format=2]
 
 [ext_resource path="res://Scripts/Wheel3.gd" type="Script" id=1]
 [ext_resource path="res://wheel1/0009.png" type="Texture" id=2]
@@ -489,10 +489,11 @@
 [ext_resource path="res://wheel3/0080.png" type="Texture" id=487]
 [ext_resource path="res://wheel3/0079.png" type="Texture" id=488]
 [ext_resource path="res://wheel3/0082.png" type="Texture" id=489]
-[ext_resource path="res://Scripts/Machine.gd" type="Script" id=490]
+[ext_resource path="res://Machine.gd" type="Script" id=490]
 [ext_resource path="res://Scripts/WalletAmount.gd" type="Script" id=491]
 [ext_resource path="res://Scripts/Wallet.gd" type="Script" id=492]
-
+[ext_resource path="res://slider.gd" type="Script" id=493]
+[ext_resource path="res://SlotMachine.gd" type="Script" id=494]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -551,6 +552,17 @@ animations = [ {
 } ]
 
 [node name="Machine" type="Node2D"]
+script = ExtResource( 494 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Encore-facts-n" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0.0941176 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 33 )
+expand = true
 
 [node name="Machine" type="AnimatedSprite" parent="."]
 position = Vector2( 475, 289 )
@@ -561,7 +573,8 @@ script = ExtResource( 490 )
 
 [node name="Lever" type="AnimatedSprite" parent="Machine"]
 show_behind_parent = true
-position = Vector2( -191, -360 )
+position = Vector2( -713.303, -852.279 )
+scale = Vector2( 2.07463, 2.07463 )
 frames = SubResource( 4 )
 animation = "lever"
 centered = false
@@ -577,6 +590,7 @@ max_value = 60.0
 value = 60.0
 rounded = true
 scrollable = false
+script = ExtResource( 493 )
 
 [node name="Panel" type="Panel" parent="Machine/Lever"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -637,16 +651,6 @@ text = "Credits"
 flat = true
 script = ExtResource( 34 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="Encore-facts-n" type="TextureRect" parent="CanvasLayer"]
-self_modulate = Color( 1, 1, 1, 0.0941176 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 33 )
-expand = true
-
 [node name="Wallet" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
 script = ExtResource( 492 )
@@ -667,7 +671,6 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[connection signal="ready" from="." to="Machine" method="_on_Machine_ready"]
 [connection signal="animation_finished" from="Machine/Lever" to="Machine/Lever" method="_on_Lever_animation_finished"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel1" method="_on_Lever_pulled"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel2" method="_on_Lever_pulled"]
@@ -675,8 +678,14 @@ __meta__ = {
 [connection signal="drag_ended" from="Machine/Lever/slider" to="Machine/Lever" method="_on_slider_drag_ended"]
 [connection signal="drag_started" from="Machine/Lever/slider" to="Machine/Lever" method="_on_slider_drag_started"]
 [connection signal="value_changed" from="Machine/Lever/slider" to="Machine/Lever" method="_on_slider_value_changed"]
+[connection signal="animation_finished" from="Machine/Wheel1" to="Machine/Wheel1" method="_on_Wheel1_animation_finished"]
+[connection signal="frame_changed" from="Machine/Wheel1" to="Machine/Wheel1" method="_on_Wheel1_frame_changed"]
 [connection signal="left_icon" from="Machine/Wheel1" to="Wallet" method="_on_Wheel1_left_icon"]
+[connection signal="animation_finished" from="Machine/Wheel2" to="Machine/Wheel2" method="_on_Wheel2_animation_finished"]
+[connection signal="frame_changed" from="Machine/Wheel2" to="Machine/Wheel2" method="_on_Wheel2_frame_changed"]
 [connection signal="middle_icon" from="Machine/Wheel2" to="Wallet" method="_on_Wheel2_middle_icon"]
+[connection signal="animation_finished" from="Machine/Wheel3" to="Machine/Wheel3" method="_on_Wheel3_animation_finished"]
+[connection signal="frame_changed" from="Machine/Wheel3" to="Machine/Wheel3" method="_on_Wheel3_frame_changed"]
 [connection signal="right_icon" from="Machine/Wheel3" to="Wallet" method="_on_Wheel3_right_icon"]
 [connection signal="pressed" from="slot-mainmenu" to="slot-mainmenu" method="_on_slotmainmenu_pressed"]
 [connection signal="pressed" from="slot-button-credits" to="slot-button-credits" method="_on_slotbuttoncredits_pressed"]
