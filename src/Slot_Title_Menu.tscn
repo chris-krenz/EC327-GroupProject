@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/fp9b8a.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Credits_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Play_Button.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Options_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://FadeIn.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Slot_Title_Menu.gd" type="Script" id=6]
+[ext_resource path="res://OptionsV2.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -13,6 +13,13 @@ outline_color = Color( 0.0980392, 0.0901961, 0.0901961, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 30
 font_data = ExtResource( 1 )
 
@@ -26,15 +33,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.894118, 0.0470588, 0.0470588, 1 )
 
-[node name="Menu" type="VBoxContainer" parent="."]
+[node name="Logo" type="Label" parent="."]
 margin_left = 80.0
 margin_top = 60.0
 margin_right = 944.0
-margin_bottom = 540.0
-
-[node name="Logo" type="Label" parent="Menu"]
-margin_right = 864.0
-margin_bottom = 105.0
+margin_bottom = 165.0
 custom_colors/font_color = Color( 0.862745, 0.803922, 0.0705882, 1 )
 custom_colors/font_outline_modulate = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -45,56 +48,11 @@ Fall 2022"
 align = 1
 valign = 1
 
-[node name="All_Buttons" type="HBoxContainer" parent="Menu"]
-margin_top = 109.0
-margin_right = 864.0
-margin_bottom = 480.0
-size_flags_vertical = 3
-
-[node name="Button_options" type="VBoxContainer" parent="Menu/All_Buttons"]
-margin_right = 430.0
-margin_bottom = 371.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Play_Button" parent="Menu/All_Buttons/Button_options" instance=ExtResource( 3 )]
-margin_top = 91.0
-margin_right = 430.0
-margin_bottom = 151.0
-mouse_default_cursor_shape = 2
-custom_colors/font_color_hover = Color( 0.894118, 0.701961, 0.0392157, 1 )
-custom_colors/font_color_pressed = Color( 0.368627, 0.905882, 0.0666667, 1 )
-scene_to_load = "res://SlotMachine.tscn"
-
-[node name="Options_button" parent="Menu/All_Buttons/Button_options" instance=ExtResource( 4 )]
-margin_top = 155.0
-margin_right = 430.0
-margin_bottom = 215.0
-mouse_default_cursor_shape = 2
-custom_colors/font_color_hover = Color( 0.878431, 0.886275, 0.0352941, 1 )
-custom_colors/font_color_pressed = Color( 0.137255, 0.835294, 0.0588235, 1 )
-
-[node name="Credits_button" parent="Menu/All_Buttons/Button_options" instance=ExtResource( 2 )]
-margin_top = 219.0
-margin_right = 430.0
-margin_bottom = 279.0
-mouse_default_cursor_shape = 2
-custom_colors/font_color_hover = Color( 0.717647, 0.854902, 0.0470588, 1 )
-custom_colors/font_color_pressed = Color( 0.247059, 0.870588, 0.0470588, 1 )
-
-[node name="CenterContainer" type="CenterContainer" parent="Menu/All_Buttons"]
-margin_left = 434.0
-margin_right = 864.0
-margin_bottom = 371.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Team_Info" type="Label" parent="Menu/All_Buttons/CenterContainer"]
-margin_left = 87.0
-margin_top = 40.0
-margin_right = 342.0
-margin_bottom = 331.0
+[node name="Team_Info" type="Label" parent="."]
+margin_left = 590.0
+margin_top = 201.0
+margin_right = 845.0
+margin_bottom = 492.0
 custom_colors/font_color = Color( 0.811765, 0.737255, 0.109804, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 3
@@ -107,6 +65,50 @@ Jayden Raphino
 Matthew Rhee
 Yanbo (Mark) Zhu"
 align = 1
+
+[node name="Container" type="Container" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Play_Button" parent="Container" instance=ExtResource( 3 )]
+margin_left = 200.0
+margin_top = 250.0
+margin_right = 500.0
+margin_bottom = 300.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color_hover = Color( 0.894118, 0.701961, 0.0392157, 1 )
+custom_colors/font_color_pressed = Color( 0.368627, 0.905882, 0.0666667, 1 )
+scene_to_load = "res://SlotMachine.tscn"
+
+[node name="Options" type="Button" parent="Container"]
+margin_left = 200.0
+margin_top = 315.0
+margin_right = 500.0
+margin_bottom = 360.0
+custom_fonts/font = SubResource( 3 )
+flat = true
+script = ExtResource( 7 )
+scene_to_load = "res://UpdatedOptionsScene.tscn"
+
+[node name="Label" type="Label" parent="Container/Options"]
+custom_colors/font_color = Color( 0.898039, 0.843137, 0.843137, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 4 )
+text = "Options"
+
+[node name="Credits_button" parent="Container" instance=ExtResource( 2 )]
+margin_left = 200.0
+margin_top = 375.0
+margin_right = 500.0
+margin_bottom = 380.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color_hover = Color( 0.717647, 0.854902, 0.0470588, 1 )
+custom_colors/font_color_pressed = Color( 0.247059, 0.870588, 0.0470588, 1 )
 
 [node name="FadeIn" parent="." instance=ExtResource( 5 )]
 visible = false
