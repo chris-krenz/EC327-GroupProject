@@ -649,6 +649,14 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 1060, 205 )
 
+[sub_resource type="DynamicFont" id=11] # id numbers off?
+size = 20
+font_data = ExtResource( 36 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+font_data = ExtResource( 36 )
+
 [node name="Machine" type="Node2D"]
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 494 )
@@ -666,6 +674,7 @@ expand = true
 
 [node name="Machine" type="AnimatedSprite" parent="."]
 position = Vector2( 624.413, 299.664 )
+position = Vector2( 577.746, 299.664 )
 scale = Vector2( 0.402, 0.398 )
 frames = SubResource( 6 )
 animation = "machine"
@@ -768,11 +777,12 @@ margin_left = 837.333
 margin_top = 480.0
 margin_right = 1007.33
 margin_bottom = 534.0
+
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.976471, 0.972549, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 0.870588, 0.882353, 0.0666667, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Back to Main Menu"
+text = "Back to Main Menu (Reset)"
 flat = true
 script = ExtResource( 35 )
 
@@ -784,12 +794,13 @@ margin_left = 931.0
 margin_top = 546.0
 margin_right = 1013.0
 margin_bottom = 593.0
+
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.933333, 0.921569, 0.921569, 1 )
 custom_colors/font_color_hover = Color( 0.796078, 0.839216, 0.0196078, 1 )
 custom_colors/font_color_pressed = Color( 0.0627451, 0.882353, 0.207843, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Credits"
+text = "Credits (Reset)"
 flat = true
 script = ExtResource( 34 )
 
@@ -797,7 +808,8 @@ script = ExtResource( 34 )
 stream = ExtResource( 576 )
 
 [node name="Wallet" type="AnimatedSprite" parent="."]
-position = Vector2( 608.413, 448.447 )
+position = Vector2( 561.746, 448.447 )
+
 scale = Vector2( 0.256836, 0.256836 )
 frames = SubResource( 7 )
 animation = "wallet"
@@ -846,12 +858,13 @@ stream = ExtResource( 581 )
 
 [node name="drop_coin_insert" type="Position2D" parent="." groups=["zone"]]
 visible = false
-position = Vector2( 748.667, 422 )
+position = Vector2( 701.736, 422 )
+
 script = ExtResource( 520 )
 
 [node name="drop_wallet_tray" type="Position2D" parent="." groups=["zone"]]
 visible = false
-position = Vector2( 593.333, 439.333 )
+position = Vector2( 546.985, 439.333 )
 script = ExtResource( 573 )
 
 [node name="Board" type="Sprite" parent="."]
@@ -861,12 +874,12 @@ scale = Vector2( 0.361751, 0.362974 )
 texture = ExtResource( 574 )
 
 [node name="Cover" type="Sprite" parent="."]
-position = Vector2( 607.413, 451.664 )
+position = Vector2( 560.746, 451.664 )
 scale = Vector2( 0.256226, 0.256226 )
 texture = ExtResource( 522 )
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 594.028, 438.664 )
+position = Vector2( 547.361, 438.664 )
 script = ExtResource( 519 )
 
 [node name="Coin" type="Sprite" parent="Node2D"]
@@ -883,6 +896,34 @@ shape = SubResource( 9 )
 
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 577 )
+
+[node name="OptionButton" type="OptionButton" parent="."]       # Need this and next 3 nodes?
+margin_left = 869.0
+margin_top = 95.0
+margin_right = 1002.0
+margin_bottom = 115.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 762.0
+margin_top = 91.0
+margin_right = 865.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 11 )
+text = "Difficulty: "
+
+[node name="CheckButton" type="CheckButton" parent="."]
+margin_left = 893.0
+margin_top = 42.0
+margin_right = 969.0
+margin_bottom = 82.0
+
+[node name="SoundOpt" type="Label" parent="."]
+margin_left = 827.0
+margin_top = 49.0
+margin_right = 913.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 10 )
+text = "Sound: "
 
 [connection signal="animation_finished" from="Machine/Lever" to="Machine/Lever" method="_on_Lever_animation_finished"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel1" method="_on_Lever_pulled"]
@@ -911,3 +952,6 @@ stream = ExtResource( 577 )
 [connection signal="coin_inserted" from="drop_coin_insert" to="Spins" method="_on_drop_coin_insert_coin_inserted"]
 [connection signal="area_entered" from="Node2D/Area2D" to="Node2D/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="input_event" from="Node2D/Area2D" to="Node2D" method="_on_Area2D_input_event"]
+[connection signal="item_selected" from="OptionButton" to="Machine/Wheel1" method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="OptionButton" to="Machine/Wheel2" method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="OptionButton" to="Machine/Wheel3" method="_on_OptionButton_item_selected"]

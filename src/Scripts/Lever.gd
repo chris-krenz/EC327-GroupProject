@@ -7,7 +7,14 @@ onready var slider : VSlider = get_node("slider")
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
-var dragging : bool = false
+onready var slider : VSlider = get_node("slider")
+
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+var dragging : bool = false   # TODO: remove?
+
+signal pulled(rand_base)
+var rand_base : int = 0
 
 signal pulled(rand_base)
 var rand_base : int = 0

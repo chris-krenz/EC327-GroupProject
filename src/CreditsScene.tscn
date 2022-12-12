@@ -77,4 +77,5 @@ stream = ExtResource( 3 )
 stream = ExtResource( 4 )
 
 [connection signal="ready" from="." to="." method="_on_Credits_ready"]
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
