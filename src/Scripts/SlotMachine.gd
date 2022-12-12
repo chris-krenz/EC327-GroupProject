@@ -1,16 +1,18 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+#export (NodePath) var dropdown_path
+#onready var dropdown = get_node(dropdown_path)
+#
+#func _ready():
+#
+#	dropdown.connect("item_selected", self, "_on_OptionButton_item_selected")
+#
+#	add_options()
+#
+#
+#func add_options():
+#	dropdown.add_item("Guaranteed Win")
+#	dropdown.add_item("Hacker")
+#	dropdown.add_item("Lucky")
+#	dropdown.add_item("Normal")
+#	dropdown.add_item("Guaranteed Loss")
