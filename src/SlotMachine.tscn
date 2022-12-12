@@ -1,4 +1,4 @@
-[gd_scene load_steps=587 format=2]
+[gd_scene load_steps=588 format=2]
 
 [ext_resource path="res://Scripts/Wheel3.gd" type="Script" id=1]
 [ext_resource path="res://wheel1/left0030.png" type="Texture" id=2]
@@ -577,6 +577,7 @@
 [ext_resource path="res://Music/LeverSound_Merged.mp3" type="AudioStream" id=575]
 [ext_resource path="res://Music/ButtonSound_Merged.mp3" type="AudioStream" id=576]
 [ext_resource path="res://Music/BackgroundMusic.mp3" type="AudioStream" id=577]
+[ext_resource path="res://Music/CoinSound.mp3" type="AudioStream" id=578]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -752,6 +753,9 @@ margin_right = -30.0
 margin_bottom = -46.0
 mouse_default_cursor_shape = 2
 script = ExtResource( 517 )
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="Machine/CoinReturn"]
+stream = ExtResource( 578 )
 
 [node name="slot-mainmenu" type="Button" parent="."]
 margin_left = 837.333
