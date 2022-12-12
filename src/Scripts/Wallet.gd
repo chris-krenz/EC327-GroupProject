@@ -38,7 +38,6 @@ var multiply  : int = 0
 var winnings  : int = 0		# Also set in WalletAmount...
 var total     : int = 0
 
-
 #var CoinWin : bool = false #For lever to stop the coin gained sound
 
 onready var coin : Node2D = get_node("/root/Machine/Node2D")
@@ -53,8 +52,8 @@ func _ready():
 func _process(_delta):
 	winnings = total - (1000*((coin.selected == true) as int))
 	frame = winnings / 1000		# Warning: Int div precision loss: OK
-	
-	
+
+
 func _on_Wheel1_left_icon(left_icon):
 	icon1 = left_icon
 
@@ -93,13 +92,12 @@ func _identify_result(icon1, icon2, icon3):		# Warning: Shadow-named: OK
 	if (icon3 == icon1):
 		match3_1 = 4
 	matches = match1_2 + match2_3 + match3_1
-	
+
 	# Clover check
 	if matches > 0:
 		if (icon1 == 1 or icon2 == 1 or icon3 == 1):
 			multiply = 1
 			total *= 2
-
 			$CoinGained.play()
 
 	if matches == 0:
@@ -116,6 +114,7 @@ func _identify_result(icon1, icon2, icon3):		# Warning: Shadow-named: OK
 		total += dict[icon3][1]
 		$CoinGained.play()
 		#CoinWin = true
+
 
 func _on_Spins_returned():
 	total += 1000

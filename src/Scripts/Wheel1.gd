@@ -8,7 +8,6 @@ extends AnimatedSprite
 #	3: "Auto Win"	: triple match always
 #	4: "Impossible"	: match never
 
-
 var difficulty : int = 3
 var rng        : RandomNumberGenerator = RandomNumberGenerator.new()
 var rotations  : int = 0
@@ -57,21 +56,6 @@ func _on_Lever_pulled(rand_base):
 
 		timer -= (timer % 12)
 		playing = true
-		
-
-
-func _on_Wheel1_animation_finished():
-	rotations += 1
-
-
-func _on_Wheel1_frame_changed():
-	if frame == timer and rotations >= 2:
-		if timer == 0:		#janky to correct for animation
-			frame = 0
-		frame     = timer - 1
-		playing   = false
-		rotations = 0
-		ready     = true
 
 
 func _on_Wheel1_animation_finished():

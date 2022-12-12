@@ -27,11 +27,11 @@ text = "You Ran Out Of Money!
 Game Over
 "
 
-[node name="Label2" parent="." index="2"]
-margin_left = 338.0
-margin_top = 327.0
-margin_right = 1046.0
-margin_bottom = 618.0
+[node name="Label" parent="." index="2"]
+margin_left = 339.0
+margin_top = 165.0
+margin_right = 699.0
+margin_bottom = 324.0
 
 [node name="CenterContainer@VBoxContainer@Button" type="Button" parent="." index="3"]
 margin_left = 1101.0
@@ -45,5 +45,17 @@ custom_fonts/font = SubResource( 2 )
 text = "Back to Main Menu"
 flat = true
 align = 0
+
+[node name="Label2" parent="." index="4"]
+margin_left = 338.0
+margin_top = 327.0
+margin_right = 1046.0
+margin_bottom = 618.0
+
+[node name="Button" parent="." index="5"]
+margin_left = 330.0
+margin_top = 660.0
+margin_right = 613.0
+margin_bottom = 705.0
 
 [connection signal="pressed" from="CenterContainer@VBoxContainer@Button" to="." method="_on_Button_pressed"]
