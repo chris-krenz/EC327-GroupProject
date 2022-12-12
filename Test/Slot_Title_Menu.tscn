@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/fp9b8a.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Credits_button.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Options_button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://FadeTest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Slot_Title_Menu.gd" type="Script" id=6]
+[ext_resource path="res://Music/BackgroundMusic.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Music/ButtonSound_Merged.mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -68,6 +70,8 @@ margin_top = 219.0
 margin_right = 430.0
 margin_bottom = 279.0
 
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="Menu/All_Buttons/Button_options/Credits_button"]
+
 [node name="CenterContainer" type="CenterContainer" parent="Menu/All_Buttons"]
 margin_left = 434.0
 margin_right = 864.0
@@ -97,4 +101,17 @@ align = 1
 anchor_right = 0.0
 anchor_bottom = 0.0
 
+<<<<<<< Updated upstream
 [connection signal="fade_done" from="FadeTest" to="." method="_on_FadeTest_fade_done"]
+=======
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[connection signal="ready" from="Menu/All_Buttons/Button_options/Credits_button" to="Menu/All_Buttons/Button_options/Credits_button" method="_on_Credits_button_ready"]
+[connection signal="load_new" from="FadeIn" to="." method="_on_FadeIn_load_new"]
+[connection signal="transitioned" from="FadeIn" to="." method="_on_FadeIn_transitioned"]
+>>>>>>> Stashed changes

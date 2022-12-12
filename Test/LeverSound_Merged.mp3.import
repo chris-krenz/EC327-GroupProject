@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/LeverSound_Merged.mp3-8a6690d4109816aa60341d0ac04dc647.mp3str"
+
+[deps]
+
+source_file="res://LeverSound_Merged.mp3"
+dest_files=[ "res://.import/LeverSound_Merged.mp3-8a6690d4109816aa60341d0ac04dc647.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

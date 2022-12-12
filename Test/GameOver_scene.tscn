@@ -6,9 +6,9 @@
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 290.0
-margin_top = 169.0
+margin_top = 134.0
 margin_right = 734.0
-margin_bottom = 431.0
+margin_bottom = 465.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 444.0
@@ -18,7 +18,12 @@ text = "You Ran Out Of Money!
 Game Over
 "
 
-[node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
+[node name="Label2" parent="CenterContainer/VBoxContainer" index="1"]
 margin_top = 217.0
 margin_right = 444.0
-margin_bottom = 262.0
+margin_bottom = 282.0
+
+[node name="Button" parent="CenterContainer/VBoxContainer" index="2"]
+margin_top = 286.0
+margin_right = 444.0
+margin_bottom = 331.0
