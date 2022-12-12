@@ -1,14 +1,13 @@
 extends AnimatedSprite
 
 # DIFFICULTY LOOKUP
-#	0: "Normal"		: ~'fair'
+#	0: "Normal"		: ~"fair"
 #	1: "Easier"		: ~doubled odds
 #	2: "Very Easy"	: always within 1-2
 #	3: "Auto Win"	: triple match always
 #	4: "Impossible"	: match never
 
-
-var luckiness  : int
+var difficulty : int = 3
 var rng        : RandomNumberGenerator = RandomNumberGenerator.new()
 var rotations  : int = 0
 var timer      : int = 0
@@ -25,6 +24,11 @@ func _ready():
 	ready     = true
 
 
+func _on_OptionButton_item_selected(index):
+	difficulty = index
+	print(difficulty)
+
+
 func _on_Lever_pulled(rand_base):
 	rotations = 0
 	ready     = false
@@ -32,21 +36,21 @@ func _on_Lever_pulled(rand_base):
 	if playing == false:
 		timer = rand_base
 		rng.randomize()
-		luckiness = 0
-		match luckiness:
-			0:
+
+		match difficulty:
+			3:	# Normal
 				timer  += rng.randi_range(0, 119)
 				timer   = (timer % 120)
-			1:
+			2:	# Lucky
 				timer  += rng.randi_range(0, 47)
 				timer   = (timer % 120)
-			2:
-				timer  += rng.randi_range(0, 23)
+			1:	# Hacker
+				timer  += rng.randi_range(0, 12)
 				timer   = (timer % 120)
-			3:
+			0:	# Guaranteed Win
 				timer  += rng.randi_range(0, 0)
 				timer   = (timer % 120)
-			4:
+			4:	# Guaranteed Lose
 				pass
 
 		timer -= (timer % 12)
