@@ -18,6 +18,12 @@ func _on_slider_drag_started():
 	dragging = true
 	$LeverSound.play()
 	
+	#if CoinGain == true:
+	#	$CoinGained.stop()
+	#else:
+	#	$CoinGained.play()
+	
+	
 func _on_slider_drag_ended(_value_changed):	# triggered when mouse button released
 	if dragging == true:
 		dragging = false

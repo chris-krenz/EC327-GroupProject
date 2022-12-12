@@ -5,7 +5,5 @@ func _on_Credits_ready():
 	$BackGroundMusic.play()
 
 func _on_Button_pressed():
-	$ButtonSound.play()
+	$ButtonSound.play()	
 	get_tree().change_scene("res://Slot_Title_Menu.tscn")
-
-

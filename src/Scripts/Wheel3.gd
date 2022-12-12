@@ -29,6 +29,7 @@ func _on_Lever_pulled(rand_base):
 	rotations = 0
 	ready     = false
 	
+	
 	if playing == false:
 		timer = rand_base
 		rng.randomize()

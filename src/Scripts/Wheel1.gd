@@ -28,8 +28,10 @@ func _ready():
 func _on_Lever_pulled(rand_base):
 	rotations = 0
 	ready     = false
+	#
 	
 	if playing == false:
+		
 		timer = rand_base
 		rng.randomize()
 		luckiness = 0
@@ -48,9 +50,11 @@ func _on_Lever_pulled(rand_base):
 				timer   = (timer % 120)
 			4:
 				pass
-
+				
+	
 		timer -= (timer % 12)
 		playing = true
+		
 
 
 func _on_Wheel1_animation_finished():

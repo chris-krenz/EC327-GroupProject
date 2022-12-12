@@ -1,4 +1,4 @@
-[gd_scene load_steps=588 format=2]
+[gd_scene load_steps=591 format=2]
 
 [ext_resource path="res://Scripts/Wheel3.gd" type="Script" id=1]
 [ext_resource path="res://wheel1/left0030.png" type="Texture" id=2]
@@ -578,6 +578,9 @@
 [ext_resource path="res://Music/ButtonSound_Merged.mp3" type="AudioStream" id=576]
 [ext_resource path="res://Music/BackgroundMusic.mp3" type="AudioStream" id=577]
 [ext_resource path="res://Music/CoinSound.mp3" type="AudioStream" id=578]
+[ext_resource path="res://Music/Winning.wav" type="AudioStream" id=579]
+[ext_resource path="res://Music/slot machine spinning 1.wav" type="AudioStream" id=580]
+[ext_resource path="res://Music/slot machine coin inserted.wav" type="AudioStream" id=581]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -787,12 +790,18 @@ text = "Credits"
 flat = true
 script = ExtResource( 34 )
 
+[node name="ButtonSound" type="AudioStreamPlayer" parent="slot-button-credits"]
+stream = ExtResource( 576 )
+
 [node name="Wallet" type="AnimatedSprite" parent="."]
 position = Vector2( 608.413, 448.447 )
 scale = Vector2( 0.256836, 0.256836 )
 frames = SubResource( 7 )
 animation = "wallet"
 script = ExtResource( 492 )
+
+[node name="CoinGained" type="AudioStreamPlayer" parent="Wallet"]
+stream = ExtResource( 579 )
 
 [node name="WalletAmount" type="RichTextLabel" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
@@ -868,6 +877,12 @@ shape = SubResource( 9 )
 
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 577 )
+
+[node name="Spinning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 580 )
+
+[node name="InsertingCoins" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 581 )
 
 [connection signal="animation_finished" from="Machine/Lever" to="Machine/Lever" method="_on_Lever_animation_finished"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel1" method="_on_Lever_pulled"]

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Slot machine win sound.wav-a09669dc92e318c6f7b5a627a9232957.sample"
+path="res://.import/Winning.wav-1d696c4527430ee8655bae0f6a8d4338.sample"
 
 [deps]
 
-source_file="res://Music/Slot machine win sound.wav"
-dest_files=[ "res://.import/Slot machine win sound.wav-a09669dc92e318c6f7b5a627a9232957.sample" ]
+source_file="res://Music/Winning.wav"
+dest_files=[ "res://.import/Winning.wav-1d696c4527430ee8655bae0f6a8d4338.sample" ]
 
 [params]
 
