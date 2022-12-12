@@ -1,4 +1,4 @@
-[gd_scene load_steps=586 format=2]
+[gd_scene load_steps=591 format=2]
 
 [ext_resource path="res://Scripts/Wheel3.gd" type="Script" id=1]
 [ext_resource path="res://wheel1/left0030.png" type="Texture" id=2]
@@ -574,6 +574,13 @@
 [ext_resource path="res://wallet/coinstack0022.png" type="Texture" id=572]
 [ext_resource path="res://Scripts/drop_zone_2.gd" type="Script" id=573]
 [ext_resource path="res://other/Board.png" type="Texture" id=574]
+[ext_resource path="res://Music/LeverSound_Merged.mp3" type="AudioStream" id=575]
+[ext_resource path="res://Music/ButtonSound_Merged.mp3" type="AudioStream" id=576]
+[ext_resource path="res://Music/BackgroundMusic.mp3" type="AudioStream" id=577]
+[ext_resource path="res://Music/CoinSound.mp3" type="AudioStream" id=578]
+[ext_resource path="res://Music/Winning.wav" type="AudioStream" id=579]
+[ext_resource path="res://Music/slot machine spinning 1.wav" type="AudioStream" id=580]
+[ext_resource path="res://Music/slot machine coin inserted.wav" type="AudioStream" id=581]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -642,7 +649,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 1060, 205 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=11] # id numbers off?
 size = 20
 font_data = ExtResource( 36 )
 
@@ -666,6 +673,7 @@ texture = ExtResource( 33 )
 expand = true
 
 [node name="Machine" type="AnimatedSprite" parent="."]
+position = Vector2( 624.413, 299.664 )
 position = Vector2( 577.746, 299.664 )
 scale = Vector2( 0.402, 0.398 )
 frames = SubResource( 6 )
@@ -701,6 +709,12 @@ margin_left = 42.0
 margin_top = 104.0
 margin_right = 96.0
 margin_bottom = 203.0
+
+[node name="LeverSound" type="AudioStreamPlayer" parent="Machine/Lever"]
+stream = ExtResource( 575 )
+
+[node name="Spinning" type="AudioStreamPlayer" parent="Machine/Lever"]
+stream = ExtResource( 580 )
 
 [node name="Wheel1" type="AnimatedSprite" parent="Machine"]
 position = Vector2( -209.318, -102.796 )
@@ -755,11 +769,15 @@ margin_bottom = -46.0
 mouse_default_cursor_shape = 2
 script = ExtResource( 517 )
 
+[node name="CoinSound" type="AudioStreamPlayer" parent="Machine/CoinReturn"]
+stream = ExtResource( 578 )
+
 [node name="slot-mainmenu" type="Button" parent="."]
-margin_left = 764.0
-margin_top = 458.667
-margin_right = 1033.0
-margin_bottom = 543.667
+margin_left = 837.333
+margin_top = 480.0
+margin_right = 1007.33
+margin_bottom = 534.0
+
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.976471, 0.972549, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 0.870588, 0.882353, 0.0666667, 1 )
@@ -768,11 +786,15 @@ text = "Back to Main Menu (Reset)"
 flat = true
 script = ExtResource( 35 )
 
+[node name="ButtonSound" type="AudioStreamPlayer" parent="slot-mainmenu"]
+stream = ExtResource( 576 )
+
 [node name="slot-button-credits" type="Button" parent="."]
-margin_left = 884.667
-margin_top = 529.004
-margin_right = 1003.67
-margin_bottom = 576.004
+margin_left = 931.0
+margin_top = 546.0
+margin_right = 1013.0
+margin_bottom = 593.0
+
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.933333, 0.921569, 0.921569, 1 )
 custom_colors/font_color_hover = Color( 0.796078, 0.839216, 0.0196078, 1 )
@@ -782,12 +804,19 @@ text = "Credits (Reset)"
 flat = true
 script = ExtResource( 34 )
 
+[node name="ButtonSound" type="AudioStreamPlayer" parent="slot-button-credits"]
+stream = ExtResource( 576 )
+
 [node name="Wallet" type="AnimatedSprite" parent="."]
 position = Vector2( 561.746, 448.447 )
+
 scale = Vector2( 0.256836, 0.256836 )
 frames = SubResource( 7 )
 animation = "wallet"
 script = ExtResource( 492 )
+
+[node name="CoinGained" type="AudioStreamPlayer" parent="Wallet"]
+stream = ExtResource( 579 )
 
 [node name="WalletAmount" type="RichTextLabel" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
@@ -795,9 +824,9 @@ anchor_left = 0.06
 anchor_top = -0.195
 anchor_right = 0.06
 anchor_bottom = -0.195
-margin_left = 413.746
+margin_left = 460.413
 margin_top = 416.664
-margin_right = 477.746
+margin_right = 524.413
 margin_bottom = 432.664
 grow_horizontal = 0
 bbcode_enabled = true
@@ -810,9 +839,9 @@ __meta__ = {
 }
 
 [node name="Spins" type="RichTextLabel" parent="."]
-margin_left = 640.333
+margin_left = 687.0
 margin_top = 421.0
-margin_right = 683.333
+margin_right = 730.0
 margin_bottom = 433.0
 grow_horizontal = 0
 bbcode_enabled = true
@@ -824,9 +853,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="InsertingCoins" type="AudioStreamPlayer" parent="Spins"]
+stream = ExtResource( 581 )
+
 [node name="drop_coin_insert" type="Position2D" parent="." groups=["zone"]]
 visible = false
 position = Vector2( 701.736, 422 )
+
 script = ExtResource( 520 )
 
 [node name="drop_wallet_tray" type="Position2D" parent="." groups=["zone"]]
@@ -861,7 +894,10 @@ position = Vector2( 3.85059, 5 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 9 )
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 577 )
+
+[node name="OptionButton" type="OptionButton" parent="."]       # Need this and next 3 nodes?
 margin_left = 869.0
 margin_top = 95.0
 margin_right = 1002.0

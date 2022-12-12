@@ -1,7 +1,7 @@
 extends AnimatedSprite
 
 # DIFFICULTY LOOKUP
-#	0: "Normal"		: ~'fair'
+#	0: "Normal"		: ~"fair"
 #	1: "Easier"		: ~doubled odds
 #	2: "Very Easy"	: always within 1-2
 #	3: "Auto Win"	: triple match always

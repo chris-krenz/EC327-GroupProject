@@ -1,10 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://fonts/fp9b8a.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Credits_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Play_Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Music/BackgroundMusic.mp3" type="AudioStream" id=4]
 [ext_resource path="res://FadeIn.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Slot_Title_Menu.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/OptionsV2.gd" type="Script" id=7]
+[ext_resource path="res://Music/ButtonSound_Merged.mp3" type="AudioStream" id=8]
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -28,12 +38,17 @@ color = Color( 0.894118, 0.0470588, 0.0470588, 1 )
 [node name="Container" type="Container" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 194.0
+margin_top = 112.0
+margin_right = 194.0
+margin_bottom = 112.0
 
 [node name="Play_Button" parent="Container" instance=ExtResource( 3 )]
-margin_left = 480.0
+margin_left = 200.0
 margin_top = 250.0
-margin_right = 800.0
-margin_bottom = 310.0
+margin_right = 500.0
+margin_bottom = 300.0
+
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -41,11 +56,30 @@ custom_colors/font_color_hover = Color( 0.894118, 0.701961, 0.0392157, 1 )
 custom_colors/font_color_pressed = Color( 0.368627, 0.905882, 0.0666667, 1 )
 scene_to_load = "res://SlotMachine.tscn"
 
+[node name="Options" type="Button" parent="Container"]
+margin_left = 200.0
+margin_top = 315.0
+margin_right = 500.0
+margin_bottom = 360.0
+custom_fonts/font = SubResource( 3 )
+flat = true
+script = ExtResource( 7 )
+scene_to_load = "res://UpdatedOptionsScene.tscn"
+
+[node name="Label" type="Label" parent="Container/Options"]
+mouse_default_cursor_shape = 2
+custom_colors/font_color = Color( 0.898039, 0.843137, 0.843137, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 4 )
+text = "Options"
+
 [node name="Credits_button" parent="Container" instance=ExtResource( 2 )]
-margin_left = 480.0
-margin_top = 350.0
-margin_right = 800.0
-margin_bottom = 410.0
+margin_left = 200.0
+margin_top = 375.0
+margin_right = 500.0
+margin_bottom = 380.0
+
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -56,10 +90,11 @@ custom_colors/font_color_pressed = Color( 0.247059, 0.870588, 0.0470588, 1 )
 visible = false
 
 [node name="Logo" type="Label" parent="."]
-margin_left = 337.0
-margin_top = 48.0
-margin_right = 1201.0
-margin_bottom = 153.0
+margin_left = 318.0
+margin_top = 64.0
+margin_right = 1182.0
+margin_bottom = 169.0
+
 custom_colors/font_color = Color( 0.862745, 0.803922, 0.0705882, 1 )
 custom_colors/font_outline_modulate = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -71,10 +106,11 @@ align = 1
 valign = 1
 
 [node name="Team_Info" type="Label" parent="."]
-margin_left = 847.0
-margin_top = 189.0
-margin_right = 1102.0
-margin_bottom = 480.0
+margin_left = 913.0
+margin_top = 275.0
+margin_right = 1168.0
+margin_bottom = 566.0
+
 custom_colors/font_color = Color( 0.811765, 0.737255, 0.109804, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 3
@@ -87,6 +123,13 @@ Jayden Raphino
 Matthew Rhee
 Yanbo (Mark) Zhu"
 align = 1
+
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="ButtonMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="load_new" from="FadeIn" to="." method="_on_FadeIn_load_new"]
 [connection signal="transitioned" from="FadeIn" to="." method="_on_FadeIn_transitioned"]
