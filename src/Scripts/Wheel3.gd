@@ -69,6 +69,7 @@ func _on_Wheel3_frame_changed():
 		playing   = false
 		rotations = 0
 		ready     = true
+		
 
 		right_icon = ceil(timer / 12)	# Warning: Int div loses precision: OK
 		emit_signal("right_icon", right_icon)		# Wallet receives to calc result

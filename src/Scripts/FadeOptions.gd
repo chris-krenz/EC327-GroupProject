@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+#Defining fading function and load new scene
 signal transitioned
 
 signal load_new

@@ -44,3 +44,5 @@ func _on_drop_coin_insert_coin_inserted():
 	spins += 1
 	actual = string % spins
 	bbcode_text = actual
+	$InsertingCoins.play()
+	

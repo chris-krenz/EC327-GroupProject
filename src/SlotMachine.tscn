@@ -704,6 +704,9 @@ margin_bottom = 203.0
 [node name="LeverSound" type="AudioStreamPlayer" parent="Machine/Lever"]
 stream = ExtResource( 575 )
 
+[node name="Spinning" type="AudioStreamPlayer" parent="Machine/Lever"]
+stream = ExtResource( 580 )
+
 [node name="Wheel1" type="AnimatedSprite" parent="Machine"]
 position = Vector2( -209.318, -102.796 )
 scale = Vector2( 1.5, 1.5 )
@@ -838,6 +841,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="InsertingCoins" type="AudioStreamPlayer" parent="Spins"]
+stream = ExtResource( 581 )
+
 [node name="drop_coin_insert" type="Position2D" parent="." groups=["zone"]]
 visible = false
 position = Vector2( 748.667, 422 )
@@ -877,12 +883,6 @@ shape = SubResource( 9 )
 
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 577 )
-
-[node name="Spinning" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 580 )
-
-[node name="InsertingCoins" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 581 )
 
 [connection signal="animation_finished" from="Machine/Lever" to="Machine/Lever" method="_on_Lever_animation_finished"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel1" method="_on_Lever_pulled"]
