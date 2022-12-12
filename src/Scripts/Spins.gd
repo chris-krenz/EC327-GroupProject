@@ -1,6 +1,5 @@
 extends RichTextLabel
 
-
 var spins : int
 var string = "[b][color=black][center]%s[/center][/color][/b]"
 var actual = ""
@@ -13,11 +12,13 @@ func _ready():
 	actual = string % 5
 	bbcode_text = actual
 
+
 func _process(_delta):
 	if spins <= 0:
 		spins = 0
 		actual = "[b][color=red][center]NONE![/center][/color][/b]"
 		bbcode_text = actual
+
 
 func _on_Lever_pulled(_rand_base):
 	if spins > 0:

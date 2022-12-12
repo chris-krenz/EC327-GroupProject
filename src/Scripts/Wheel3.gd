@@ -7,7 +7,6 @@ extends AnimatedSprite
 #	3: "Auto Win"	: triple match always
 #	4: "Impossible"	: match never
 
-
 var difficulty : int = 3
 var rng        : RandomNumberGenerator = RandomNumberGenerator.new()
 var rotations  : int = 0
@@ -35,11 +34,13 @@ func _on_Lever_pulled(rand_base):
 	ready     = false
 	
 	if playing == false:
+		$LeverSound.play()
+
 		timer = rand_base
 		rng.randomize()
 		rng.randomize()
 		rng.randomize()			# Redundancy necessary to distinguish wheels...
-
+#		$LeverSound.stop()
 		match difficulty:
 			3:	# Normal
 				timer  += rng.randi_range(0, 119)
@@ -59,10 +60,12 @@ func _on_Lever_pulled(rand_base):
 
 		timer  -= (timer % 12)
 		playing = true
+		$Spinning.play()
 
 
 func _on_Wheel3_animation_finished():
 	rotations += 1
+	$LeverSound.stop()
 
 
 func _on_Wheel3_frame_changed():
@@ -73,6 +76,7 @@ func _on_Wheel3_frame_changed():
 		playing   = false
 		rotations = 0
 		ready     = true
+
 
 		right_icon = ceil(timer / 12)	# Warning: Int div loses precision: OK
 		emit_signal("right_icon", right_icon)		# Wallet receives to calc result

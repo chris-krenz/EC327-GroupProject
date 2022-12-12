@@ -6,14 +6,13 @@ signal dragsignal;
 
 func _ready():
 	connect("dragsignal",self,"_set_drag_pc")
-	
-	
+
+
 func _process(delta):
 	if dragging:
 		var mousepos = get_viewport().get_mouse_position()
 		self.position = Vector2(mousepos.x, mousepos.y)
 
-		
 
 func _set_drag_pc():
 	dragging=!dragging

@@ -8,7 +8,6 @@ extends AnimatedSprite
 #	3: "Auto Win"	: triple match always
 #	4: "Impossible"	: match never
 
-
 var difficulty  : int = 3
 var rng         : RandomNumberGenerator = RandomNumberGenerator.new()
 var rotations   : int = 0
