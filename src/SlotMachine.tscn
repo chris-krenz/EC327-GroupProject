@@ -769,16 +769,16 @@ flat = true
 script = ExtResource( 35 )
 
 [node name="slot-button-credits" type="Button" parent="."]
-margin_left = 930.0
-margin_top = 525.0
-margin_right = 1012.0
-margin_bottom = 572.0
+margin_left = 884.667
+margin_top = 529.004
+margin_right = 1003.67
+margin_bottom = 576.004
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.933333, 0.921569, 0.921569, 1 )
 custom_colors/font_color_hover = Color( 0.796078, 0.839216, 0.0196078, 1 )
 custom_colors/font_color_pressed = Color( 0.0627451, 0.882353, 0.207843, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Credits"
+text = "Credits (Reset)"
 flat = true
 script = ExtResource( 34 )
 
