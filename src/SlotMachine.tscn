@@ -1,4 +1,4 @@
-[gd_scene load_steps=583 format=2]
+[gd_scene load_steps=584 format=2]
 
 [ext_resource path="res://Scripts/Wheel3.gd" type="Script" id=1]
 [ext_resource path="res://wheel1/left0030.png" type="Texture" id=2]
@@ -70,7 +70,7 @@
 [ext_resource path="res://Scripts/Lever.gd" type="Script" id=68]
 [ext_resource path="res://Scripts/Wheel2.gd" type="Script" id=69]
 [ext_resource path="res://Scripts/Wheel1.gd" type="Script" id=70]
-[ext_resource path="res://Spins.gd" type="Script" id=71]
+[ext_resource path="res://Scripts/Spins.gd" type="Script" id=71]
 [ext_resource path="res://lever/0036.png" type="Texture" id=72]
 [ext_resource path="res://lever/0031.png" type="Texture" id=73]
 [ext_resource path="res://lever/0032.png" type="Texture" id=74]
@@ -489,13 +489,13 @@
 [ext_resource path="res://wheel3/right0106.png" type="Texture" id=487]
 [ext_resource path="res://wheel3/right0108.png" type="Texture" id=488]
 [ext_resource path="res://wheel3/right0110.png" type="Texture" id=489]
-[ext_resource path="res://Machine.gd" type="Script" id=490]
+[ext_resource path="res://Scripts/Machine.gd" type="Script" id=490]
 [ext_resource path="res://Scripts/WalletAmount.gd" type="Script" id=491]
 [ext_resource path="res://Scripts/Wallet.gd" type="Script" id=492]
-[ext_resource path="res://slider.gd" type="Script" id=493]
-[ext_resource path="res://SlotMachine.gd" type="Script" id=494]
+[ext_resource path="res://Scripts/slider.gd" type="Script" id=493]
+[ext_resource path="res://Scripts/SlotMachine.gd" type="Script" id=494]
 [ext_resource path="res://lever/0033.png" type="Texture" id=495]
-[ext_resource path="res://CoinReturn.gd" type="Script" id=496]
+[ext_resource path="res://Scripts/CoinReturn.gd" type="Script" id=496]
 [ext_resource path="res://coinreturn/button0012.png" type="Texture" id=497]
 [ext_resource path="res://coinreturn/button0020.png" type="Texture" id=498]
 [ext_resource path="res://coinreturn/button0019.png" type="Texture" id=499]
@@ -516,12 +516,12 @@
 [ext_resource path="res://coinreturn/button0011.png" type="Texture" id=514]
 [ext_resource path="res://coinreturn/button0014.png" type="Texture" id=515]
 [ext_resource path="res://coinreturn/button0016.png" type="Texture" id=516]
-[ext_resource path="res://Button.gd" type="Script" id=517]
-[ext_resource path="res://coin.png" type="Texture" id=518]
-[ext_resource path="res://Node2D.gd" type="Script" id=519]
-[ext_resource path="res://drop_zone.gd" type="Script" id=520]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=517]
+[ext_resource path="res://other/coin.png" type="Texture" id=518]
+[ext_resource path="res://Scripts/Node2D.gd" type="Script" id=519]
+[ext_resource path="res://Scripts/drop_zone.gd" type="Script" id=520]
 [ext_resource path="res://wallet/coinstack0050.png" type="Texture" id=521]
-[ext_resource path="res://cover.png" type="Texture" id=522]
+[ext_resource path="res://other/cover.png" type="Texture" id=522]
 [ext_resource path="res://wallet/coinstack0047.png" type="Texture" id=523]
 [ext_resource path="res://wallet/coinstack0045.png" type="Texture" id=524]
 [ext_resource path="res://wallet/coinstack0046.png" type="Texture" id=525]
@@ -572,7 +572,8 @@
 [ext_resource path="res://wallet/coinstack0033.png" type="Texture" id=570]
 [ext_resource path="res://wallet/coinstack0004.png" type="Texture" id=571]
 [ext_resource path="res://wallet/coinstack0022.png" type="Texture" id=572]
-[ext_resource path="res://drop_zone_2.gd" type="Script" id=573]
+[ext_resource path="res://Scripts/drop_zone_2.gd" type="Script" id=573]
+[ext_resource path="res://other/Board.png" type="Texture" id=574]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -642,6 +643,7 @@ animations = [ {
 extents = Vector2( 1060, 205 )
 
 [node name="Machine" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 494 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -656,7 +658,7 @@ texture = ExtResource( 33 )
 expand = true
 
 [node name="Machine" type="AnimatedSprite" parent="."]
-position = Vector2( 475, 289 )
+position = Vector2( 624.413, 299.664 )
 scale = Vector2( 0.402, 0.398 )
 frames = SubResource( 6 )
 animation = "machine"
@@ -678,6 +680,7 @@ margin_left = 48.0
 margin_top = 55.0
 margin_right = 83.0
 margin_bottom = 168.0
+mouse_default_cursor_shape = 2
 max_value = 60.0
 value = 60.0
 rounded = true
@@ -745,8 +748,11 @@ mouse_default_cursor_shape = 2
 script = ExtResource( 517 )
 
 [node name="slot-mainmenu" type="Button" parent="."]
-margin_right = 170.0
-margin_bottom = 54.0
+margin_left = 837.333
+margin_top = 480.0
+margin_right = 1007.33
+margin_bottom = 534.0
+mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.976471, 0.972549, 0.972549, 1 )
 custom_colors/font_color_hover = Color( 0.870588, 0.882353, 0.0666667, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -759,6 +765,7 @@ margin_left = 931.0
 margin_top = 546.0
 margin_right = 1013.0
 margin_bottom = 593.0
+mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.933333, 0.921569, 0.921569, 1 )
 custom_colors/font_color_hover = Color( 0.796078, 0.839216, 0.0196078, 1 )
 custom_colors/font_color_pressed = Color( 0.0627451, 0.882353, 0.207843, 1 )
@@ -768,7 +775,7 @@ flat = true
 script = ExtResource( 34 )
 
 [node name="Wallet" type="AnimatedSprite" parent="."]
-position = Vector2( 459, 437.783 )
+position = Vector2( 608.413, 448.447 )
 scale = Vector2( 0.256836, 0.256836 )
 frames = SubResource( 7 )
 animation = "wallet"
@@ -780,10 +787,10 @@ anchor_left = 0.06
 anchor_top = -0.195
 anchor_right = 0.06
 anchor_bottom = -0.195
-margin_left = 311.0
-margin_top = 406.0
-margin_right = 375.0
-margin_bottom = 422.0
+margin_left = 460.413
+margin_top = 416.664
+margin_right = 524.413
+margin_bottom = 432.664
 grow_horizontal = 0
 bbcode_enabled = true
 tab_size = 2
@@ -795,11 +802,10 @@ __meta__ = {
 }
 
 [node name="Spins" type="RichTextLabel" parent="."]
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 539.0
-margin_top = 410.0
-margin_right = 578.0
-margin_bottom = 422.0
+margin_left = 687.0
+margin_top = 421.0
+margin_right = 730.0
+margin_bottom = 433.0
 grow_horizontal = 0
 bbcode_enabled = true
 tab_size = 2
@@ -812,16 +818,27 @@ __meta__ = {
 
 [node name="drop_coin_insert" type="Position2D" parent="." groups=["zone"]]
 visible = false
-position = Vector2( 599, 410 )
+position = Vector2( 748.667, 422 )
 script = ExtResource( 520 )
 
 [node name="drop_wallet_tray" type="Position2D" parent="." groups=["zone"]]
 visible = false
-position = Vector2( 445.564, 429 )
+position = Vector2( 593.333, 439.333 )
 script = ExtResource( 573 )
 
+[node name="Board" type="Sprite" parent="."]
+position = Vector2( 182.667, 300 )
+rotation = 1.5708
+scale = Vector2( 0.361751, 0.362974 )
+texture = ExtResource( 574 )
+
+[node name="Cover" type="Sprite" parent="."]
+position = Vector2( 607.413, 451.664 )
+scale = Vector2( 0.256226, 0.256226 )
+texture = ExtResource( 522 )
+
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 444.615, 428 )
+position = Vector2( 594.028, 438.664 )
 script = ExtResource( 519 )
 
 [node name="Coin" type="Sprite" parent="Node2D"]
@@ -835,11 +852,6 @@ scale = Vector2( 0.1, 0.1 )
 position = Vector2( 3.85059, 5 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 9 )
-
-[node name="Cover" type="Sprite" parent="."]
-position = Vector2( 458, 441 )
-scale = Vector2( 0.256226, 0.256226 )
-texture = ExtResource( 522 )
 
 [connection signal="animation_finished" from="Machine/Lever" to="Machine/Lever" method="_on_Lever_animation_finished"]
 [connection signal="pulled" from="Machine/Lever" to="Machine/Wheel1" method="_on_Lever_pulled"]
@@ -861,13 +873,10 @@ texture = ExtResource( 522 )
 [connection signal="animation_finished" from="Machine/CoinReturn" to="Machine/CoinReturn" method="_on_CoinReturn_animation_finished"]
 [connection signal="animation_finished" from="Machine/CoinReturn" to="Spins" method="_on_CoinReturn_animation_finished"]
 [connection signal="pressed" from="Machine/CoinReturn/Button" to="Machine/CoinReturn" method="_on_Button_pressed"]
-[connection signal="pressed" from="Machine/CoinReturn/Button" to="Spins" method="_on_Button_pressed"]
 [connection signal="pressed" from="slot-mainmenu" to="slot-mainmenu" method="_on_slotmainmenu_pressed"]
 [connection signal="pressed" from="slot-button-credits" to="slot-button-credits" method="_on_slotbuttoncredits_pressed"]
 [connection signal="freespins" from="Wallet" to="Spins" method="_on_Wallet_freespins"]
-[connection signal="winnings" from="Wallet" to="WalletAmount" method="_on_Wallet_winnings"]
 [connection signal="returned" from="Spins" to="Wallet" method="_on_Spins_returned"]
 [connection signal="coin_inserted" from="drop_coin_insert" to="Spins" method="_on_drop_coin_insert_coin_inserted"]
-[connection signal="grabbed" from="Node2D" to="Wallet" method="_on_Node2D_grabbed"]
-[connection signal="released" from="Node2D" to="Wallet" method="_on_Node2D_released"]
+[connection signal="area_entered" from="Node2D/Area2D" to="Node2D/Area2D" method="_on_Area2D_area_entered"]
 [connection signal="input_event" from="Node2D/Area2D" to="Node2D" method="_on_Area2D_input_event"]

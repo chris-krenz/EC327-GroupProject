@@ -35,8 +35,7 @@ func _on_slider_value_changed(value):
 	elif (dragging == true) and (value <= 20):
 		self.playing = true
 		dragging = false
-		
 		rng.seed  = hash("FooBar")
 		rng.randomize()
-		rand_base = rng.randi_range(0, 120)
+		rand_base = rng.randi_range(0, 119)
 		emit_signal("pulled", rand_base)	# Picked up by Wheel(s)

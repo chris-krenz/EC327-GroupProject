@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Scripts/FadeOptions.gd" type="Script" id=1]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Fade_to_next"
 tracks/0/type = "value"
