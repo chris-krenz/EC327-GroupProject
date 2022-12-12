@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://fonts/fp9b8a.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Credits_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Play_Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Music/BackgroundMusic.mp3" type="AudioStream" id=4]
 [ext_resource path="res://FadeIn.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Slot_Title_Menu.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/OptionsV2.gd" type="Script" id=7]
+[ext_resource path="res://Music/ButtonSound_Merged.mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 1 )
@@ -117,6 +119,13 @@ Jayden Raphino
 Matthew Rhee
 Yanbo (Mark) Zhu"
 align = 1
+
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="ButtonMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="load_new" from="FadeIn" to="." method="_on_FadeIn_load_new"]
 [connection signal="transitioned" from="FadeIn" to="." method="_on_FadeIn_transitioned"]

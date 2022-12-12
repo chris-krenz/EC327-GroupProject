@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/fp9b8a.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Return_to_Main.gd" type="Script" id=2]
+[ext_resource path="res://Music/BackgroundMusic.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Music/ButtonSound_Merged.mp3" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -68,4 +70,11 @@ text = "Back to Main Menu"
 flat = true
 align = 0
 
+[node name="BackGroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="ready" from="." to="." method="_on_Credits_ready"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

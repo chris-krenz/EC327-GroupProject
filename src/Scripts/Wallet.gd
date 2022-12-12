@@ -109,3 +109,4 @@ func _identify_result(icon1, icon2, icon3):		# Warning: Shadow-named: OK
 
 func _on_Spins_returned():
 	total += 1000
+	
