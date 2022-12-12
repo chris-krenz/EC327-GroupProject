@@ -38,6 +38,9 @@ var multiply  : int = 0
 var winnings  : int = 0		# Also set in WalletAmount...
 var total     : int = 0
 
+
+#var CoinWin : bool = false #For lever to stop the coin gained sound
+
 onready var coin : Node2D = get_node("/root/Machine/Node2D")
 
 signal freespins(number)
@@ -96,16 +99,23 @@ func _identify_result(icon1, icon2, icon3):		# Warning: Shadow-named: OK
 		if (icon1 == 1 or icon2 == 1 or icon3 == 1):
 			multiply = 1
 			total *= 2
-	
+
+			$CoinGained.play()
+
 	if matches == 0:
 		pass
 	elif matches < 3:
 		total += dict[icon2][0]
+		$CoinGained.play()
+		#CoinWin = true
 	elif matches == 4:
 		total += dict[icon3][0]
+		$CoinGained.play()
+		#CoinWin = true
 	else:
 		total += dict[icon3][1]
-
+		$CoinGained.play()
+		#CoinWin = true
 
 func _on_Spins_returned():
 	total += 1000
