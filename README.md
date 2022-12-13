@@ -4,4 +4,4 @@
 
 # If you would like to try and download the executable and play it, the file can be found in the /misc/executables with the name EncoreLite.exe
 
-# The video presentation of the project can be found here: 
+ 
