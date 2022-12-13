@@ -6,7 +6,7 @@ var option
 
 
 func _ready():
-	$BackGroundMusic.play()
+	
 	dropdown.connect("item_selected", self, "_on_OptionButton_item_selected")
 	add_options()
 
