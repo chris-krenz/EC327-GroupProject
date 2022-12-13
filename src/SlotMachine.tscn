@@ -735,7 +735,7 @@ script = ExtResource( 1 )
 
 [node name="Spinning" type="AudioStreamPlayer" parent="Machine/Wheel3"]
 stream = ExtResource( 580 )
-volume_db = -15.208
+volume_db = -20.604
 
 [node name="LeverSound" type="AudioStreamPlayer" parent="Machine/Wheel3"]
 stream = ExtResource( 575 )
@@ -893,11 +893,13 @@ margin_left = 926.0
 margin_top = 42.0
 margin_right = 1002.0
 margin_bottom = 82.0
+pressed = true
 script = ExtResource( 582 )
 
 [node name="BackGroundMusic" type="AudioStreamPlayer" parent="CheckButton"]
 stream = ExtResource( 577 )
 volume_db = -10.302
+autoplay = true
 
 [node name="SoundOpt" type="Label" parent="."]
 margin_left = 740.0
